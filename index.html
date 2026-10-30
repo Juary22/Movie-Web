@@ -8,20 +8,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Movie Web</h1>
-        <form id="form">
-            <input type="search" id="search" class="search" placeholder="search ">
-        </form>
-        
-    </header>
-    
-    <main id="main">
 
-    </main>
+    <!-- ========== PARTE DO JUARY: BASE DO MENU (requisito 1) ========== -->
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="#item1" data-target="item1"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="#item2" data-target="item2"><i class="fa-solid fa-star"></i> Favoritos</a></li>
+            <li><a href="#item3" data-target="item3"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="container">
+        <div class="circle-container">
+            <div class="circle">
+                <button id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars open"></i>
+                    <i class="fa-solid fa-xmark close"></i>
+                </button>
+            </div>
+        </div>
+
+        <header>
+            <h1>Welcome to Movie Web</h1>
+            <form id="form">
+                <input type="search" id="search" class="search" placeholder="search ">
+            </form>
+        </header>
+        <!-- ========== FIM DA BASE DO MENU ========== -->
+
+
+        <!-- ========== PARTE DO JUARY: ITEM 1 (Início) ========== -->
+        <section id="item1" class="panel active">
+            <div class="hero">
+                <h2>O seu cinema, num só sítio</h2>
+                <p id="saudacao"></p>
+                <p>Descubra os filmes mais populares, pesquise qualquer título, guarde os seus favoritos e fale connosco.</p>
+                <button id="btn-populares" type="button" class="btn">Ver filmes populares</button>
+            </div>
+            <h2 id="main-title" class="section-title">Filmes populares</h2>
+            <main id="main"></main>
+        </section>
+        <!-- ========== FIM DO ITEM 1 ========== -->
+
+        <!-- ========== PARTE DO MARLEY: ITEM 2 ========== -->
+        <section id="item2" class="panel">
+            <!-- Marley: o teu HTML vem aqui -->
+        </section>
+        <!-- ========== FIM DO ITEM 2 ========== -->
+
+        <!-- ========== PARTE DO TELMO: ITEM 3 ========== -->
+        <section id="item3" class="panel">
+            <!-- Telmo: o teu HTML vem aqui -->
+        </section>
+        <!-- ========== FIM DO ITEM 3 ========== -->
+    </div>
 
     <script src="config.js"></script>
     <script src="script.js"></script>
-    
 </body>
 </html>
