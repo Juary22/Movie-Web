@@ -140,3 +140,103 @@ getMovies(API_URL);
     getMovies(API_URL);
   });
 })();
+
+/* ===== PARTE DO MARLEY: ITEM 2 (Favoritos, guardados no localStorage) ===== */
+(function () {
+  const KEY = 'movieweb_favoritos';
+  const lista = document.getElementById('favoritos-lista');
+  const vazio = document.getElementById('fav-vazio');
+  const contador = document.getElementById('fav-count');
+  const limpar = document.getElementById('fav-clear');
+
+  function carregar() {
+    try {
+      return JSON.parse(localStorage.getItem(KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function guardar(favs) {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(favs));
+    } catch (e) {
+      console.error('Não foi possível guardar os favoritos', e);
+    }
+  }
+
+  const eFavorito = (id) => carregar().some((m) => m.id === id);
+
+  function alternar(movie) {
+    let favs = carregar();
+    if (favs.some((m) => m.id === movie.id)) {
+      favs = favs.filter((m) => m.id !== movie.id);
+    } else {
+      favs.push(movie);
+    }
+    guardar(favs);
+  }
+
+  function atualizarBotao(btn) {
+    const fav = eFavorito(Number(btn.dataset.id));
+    btn.classList.toggle('active', fav);
+    btn.title = fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos';
+    btn.innerHTML = fav
+      ? '<i class="fa-solid fa-star"></i>'
+      : '<i class="fa-regular fa-star"></i>';
+  }
+
+  function adicionarBotao(card) {
+    if (card.querySelector('.fav-btn')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fav-btn';
+    btn.dataset.id = card.dataset.id;
+    card.appendChild(btn);
+    atualizarBotao(btn);
+  }
+
+  function desenharFavoritos() {
+    const favs = carregar();
+    lista.innerHTML = '';
+    favs.forEach((movie) => {
+      const card = createMovieCard(movie);
+      adicionarBotao(card);
+      lista.appendChild(card);
+    });
+    contador.textContent = favs.length;
+    vazio.hidden = favs.length > 0;
+    limpar.hidden = favs.length === 0;
+  }
+
+  // Clique na estrela (funciona nos resultados e na lista de favoritos)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.fav-btn');
+    if (!btn) return;
+    const id = Number(btn.dataset.id);
+    const movie = window.movieCache[id] || carregar().find((m) => m.id === id);
+    if (!movie) return;
+    alternar(movie);
+    document.querySelectorAll('#main .fav-btn').forEach(atualizarBotao);
+    desenharFavoritos();
+  });
+
+  limpar.addEventListener('click', () => {
+    if (confirm('Remover todos os favoritos?')) {
+      guardar([]);
+      document.querySelectorAll('#main .fav-btn').forEach(atualizarBotao);
+      desenharFavoritos();
+    }
+  });
+
+  // Sempre que aparecem novos filmes no Início, juntar-lhes a estrela
+  new MutationObserver(() => {
+    document.querySelectorAll('#main .movie').forEach(adicionarBotao);
+  }).observe(document.getElementById('main'), { childList: true });
+
+  document.addEventListener('section:shown', (e) => {
+    if (e.detail === 'item2') desenharFavoritos();
+  });
+
+  desenharFavoritos();
+})();
