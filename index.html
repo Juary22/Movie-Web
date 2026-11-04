@@ -61,9 +61,42 @@
         <!-- ========== FIM DO ITEM 2 ========== -->
 
         <!-- ========== PARTE DO TELMO: ITEM 3 ========== -->
-        <section id="item3" class="panel">
-            <!-- Telmo: o teu HTML vem aqui -->
-        </section>
+     <section id="item3" class="panel">
+          <h2 class="section-title">Contacto</h2>
+     <div class="contacto-card">
+        <div class="contacto-info">
+            <h3>Fale connosco</h3>
+            <p>Tem alguma dúvida, sugestão ou quer dizer-nos o que acha do site? Responderemos o mais depressa possível.</p>
+            <ul>
+                <li><i class="fa-solid fa-envelope"></i> movieweb@exemplo.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Cabo Verde</li>
+                <li><i class="fa-solid fa-clock"></i> Seg a Sex, 9h às 18h</li>
+            </ul>
+        </div>
+
+        <form id="form-contacto" novalidate>
+            <div class="campo">
+                <i class="fa-solid fa-user"></i>
+                <input id="ct-nome" type="text" placeholder="O seu nome">
+                <small class="erro" id="erro-nome"></small>
+            </div>
+            <div class="campo">
+                <i class="fa-solid fa-envelope"></i>
+                <input id="ct-email" type="email" placeholder="O seu email">
+                <small class="erro" id="erro-email"></small>
+            </div>
+            <div class="campo campo-msg">
+                <i class="fa-solid fa-message"></i>
+                <textarea id="ct-msg" rows="5" placeholder="A sua mensagem"></textarea>
+                <small class="erro" id="erro-msg"></small>
+            </div>
+            <button type="submit" class="btn btn-enviar">
+                Enviar mensagem <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <p id="ct-sucesso" class="sucesso" hidden></p>
+        </form>
+    </div>
+</section>
         <!-- ========== FIM DO ITEM 3 ========== -->
     </div>
 

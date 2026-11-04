@@ -240,3 +240,34 @@ getMovies(API_URL);
 
   desenharFavoritos();
 })();
+
+
+/* ===== PARTE DO TELMO: ITEM 3 (Contacto) ===== */
+(function () {
+  const form = document.getElementById('form-contacto');
+  const sucesso = document.getElementById('ct-sucesso');
+
+  function erro(id, texto) {
+    document.getElementById(id).textContent = texto;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('ct-nome').value.trim();
+    const email = document.getElementById('ct-email').value.trim();
+    const msg = document.getElementById('ct-msg').value.trim();
+    let ok = true;
+
+    erro('erro-nome', ''); erro('erro-email', ''); erro('erro-msg', '');
+
+    if (nome.length < 2) { erro('erro-nome', 'Escreva o seu nome.'); ok = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro('erro-email', 'Email inválido.'); ok = false; }
+    if (msg.length < 10) { erro('erro-msg', 'A mensagem precisa de pelo menos 10 caracteres.'); ok = false; }
+
+    if (!ok) { sucesso.hidden = true; return; }
+
+    sucesso.textContent = 'Obrigado, ' + nome + '! A sua mensagem foi enviada.';
+    sucesso.hidden = false;
+    form.reset();
+  });
+})();

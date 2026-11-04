@@ -362,3 +362,81 @@ vertical-align: middle;
 .btn[hidden]{
 display: none;
 }
+
+
+#item3 .contacto-card {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 0;
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#item3 .contacto-info {
+  padding: 40px 30px;
+  background: linear-gradient(160deg, #1a2a8a, #0a1450);
+}
+#item3 .contacto-info h3 { margin-bottom: 12px; font-size: 1.5rem; }
+#item3 .contacto-info p { opacity: 0.85; line-height: 1.6; margin-bottom: 24px; }
+#item3 .contacto-info ul { list-style: none; padding: 0; display: grid; gap: 14px; }
+#item3 .contacto-info i { width: 22px; color: #ffd84d; margin-right: 8px; }
+
+#item3 form { padding: 40px 30px; display: grid; gap: 18px; }
+
+#item3 .campo { position: relative; }
+#item3 .campo > i {
+  position: absolute; left: 14px; top: 15px;
+  color: #7f8ccf; pointer-events: none;
+}
+#item3 .campo input,
+#item3 .campo textarea {
+  width: 100%;
+  padding: 13px 14px 13px 42px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#item3 .campo input:focus,
+#item3 .campo textarea:focus {
+  border-color: #4f6bff;
+  box-shadow: 0 0 0 4px rgba(79, 107, 255, 0.25);
+}
+#item3 .campo textarea { resize: vertical; }
+
+#item3 .erro { display: block; min-height: 1.1em; margin-top: 4px; color: #ff7b7b; font-size: 0.85rem; }
+
+#item3 .btn-enviar {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4f6bff, #8a4fff);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#item3 .btn-enviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 107, 255, 0.4);
+}
+
+#item3 .sucesso {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid #2ecc71;
+  color: #7dffb0;
+}
+
+/* Ecrãs pequenos: uma coluna */
+@media (max-width: 700px) {
+  #item3 .contacto-card { grid-template-columns: 1fr; }
+} 
