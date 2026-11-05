@@ -10,7 +10,7 @@ overflow-x: hidden;
 }
 
 body{
-background-color: #1b2250; /* cor visível por trás do conteúdo rodado */
+background-color: #1b2250; 
 font-family: 'Poppins', sans-serif;
 margin: 0;
 color: #fff;
@@ -363,6 +363,7 @@ vertical-align: middle;
 display: none;
 }
 
+/* ===== PARTE DO TELMO: ITEM 3 (Contacto) ===== */
 
 #item3 .contacto-card {
   display: grid;
