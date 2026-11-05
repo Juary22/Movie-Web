@@ -31,17 +31,14 @@ document.querySelectorAll('.menu a').forEach((link) => {
   });
 });
 
-// Fechar com a tecla Esc
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') setMenu(false);
 });
 
 
-/* ===== PARTE DO JUARY: filmes e pesquisa =====
-   API_URL e API_KEY vêm do config.js (nunca fazer commit desse ficheiro). */
+/* ===== PARTE DO JUARY: filmes e pesquisa =====*/
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
-// Se o config.js não definir SEARCH_URL, constrói-se a partir da API_KEY
 const SEARCH_API = (typeof SEARCH_URL !== 'undefined')
   ? SEARCH_URL
   : `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
